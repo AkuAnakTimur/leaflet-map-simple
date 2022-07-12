@@ -26,36 +26,32 @@
   <script>
 
   /* Set up the initial map center and zoom level */
-  var map = L.map('map', {
+    var satu = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {attribution: '&copy; <a href="https://osm.org/copyright">\
+        OpenStreetMap</a> contributors, &copy;\<a href="https://carto.com/attribution">CARTO</a>'});
+    
+    var dua = L.tileLayer(mapboxUrl, {id: 'akuanaktimur.5qhe20b2', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});
+
+    
+    var map = L.map('map', {
     center: [5.5637, 100.8630], // EDIT coordinates to re-center map
     zoom: 12,  // EDIT from 1 (zoomed out) to 18 (zoomed in)
     scrollWheelZoom: false,
     tap: false
   });
-var basemaps = {
-
-  'Basemap': L.tileLayer.wms('http://ows.mundialis.de/services/service?', {
-        layers: 'TOPO-OSM-WMS'
-    }),
   
+    var baseMaps = {
+    "OpenStreetMap/CARTO": satu,
 };
 
-L.control.layers(basemaps).addTo(map);
-
-basemaps.Basemap.addTo(map);    
-    
-  /* display basemap tiles -- see others at https://leaflet-extras.github.io/leaflet-providers/preview/ */
-  L.tileLayer(
-    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://osm.org/copyright">\
-        OpenStreetMap</a> contributors, &copy;\
-        <a href="https://carto.com/attribution">CARTO</a>'
-  }).addTo(map);
-
+    var overlayMaps = {
+    "Cubaan": dua
+};
   /* Display a point marker with pop-up text */
   /* L.marker([41.77, -72.69]).addTo(map) // EDIT marker coordinates
   .bindPopup("Insert pop-up text here"); // EDIT pop-up text message */
 
+    var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+    
   </script>
 </body>
 </html>
