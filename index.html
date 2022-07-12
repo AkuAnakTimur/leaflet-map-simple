@@ -26,25 +26,33 @@
   <script>
 
   /* Set up the initial map center and zoom level */
+  var streets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3'],
+    attribution: '© Google'}
+    );
+    
+   var sat = L.tileLayer('http://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3'],
+    attribution: '© Google'}
+    ); 
+    
   var map = L.map('map', {
     center: [5.5637, 100.8630], // EDIT coordinates to re-center map
     zoom: 12,  // EDIT from 1 (zoomed out) to 18 (zoomed in)
     scrollWheelZoom: false,
-    tap: false
-  });
+    tap: false,
+    layers:[gmap]}
+    );
 
-    /*
-  /* display basemap tiles -- see others at https://leaflet-extras.github.io/leaflet-providers/preview/ */
-  L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
-    maxZoom: 20,
-    subdomains:['mt0','mt1','mt2','mt3']
-  })
-     .addTo(map);
+var baseMaps = {
+    "Google Streets": gmap,
+    "Google Satellite": sat
+};
 
-  /* Display a point marker with pop-up text */
-  L.marker([5.5637, 100.8630]).addTo(map) // EDIT marker coordinates
-  .bindPopup("TA-DA"); // EDIT pop-up text message
-
+var layerControl = L.control.layers(baseMaps).addTo(map);
+    
   </script>
 </body>
 </html>
