@@ -26,8 +26,10 @@
   <script>
 
   /* Set up the initial map center and zoom level */
-    var satu = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {attribution: '&copy; <a href="https://osm.org/copyright">\
-        OpenStreetMap</a> contributors, &copy;\<a href="https://carto.com/attribution">CARTO</a>'});
+    var satu = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+});
     
     var dua = L.tileLayer(mapboxUrl, {id: 'akuanaktimur.5qhe20b2', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});
 
