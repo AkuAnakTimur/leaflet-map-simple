@@ -33,25 +33,33 @@
     tap: false
   });
 
-var basemaps = {
+/* var basemaps = {
 
-  'Basemap': L.tileLayer.wms('http://ows.mundialis.de/services/service?', {
-        layers: 'TOPO-WMS,OSM-Overlay-WMS'
-    }),
+  'Basemap': L.tileLayer.wms
+  
+  ('http://ows.mundialis.de/services/service?',
+  
+  {layers: 'TOPO-WMS,OSM-Overlay-WMS'}
+  
+  ),
   
 };
 
 L.control.layers(basemaps).addTo(map);
 
-basemaps.Basemap.addTo(map);    
+basemaps.Basemap.addTo(map);
     
   /* display basemap tiles -- see others at https://leaflet-extras.github.io/leaflet-providers/preview/ */
-  L.tileLayer(
-    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-      attribution: '&copy; <a href="https://osm.org/copyright">\
-        OpenStreetMap</a> contributors, &copy;\
-        <a href="https://carto.com/attribution">CARTO</a>'
-  }).addTo(map);
+  L.tileLayer.wms
+  
+  (
+    'http://ows.mundialis.de/services/service?',
+    
+    {
+      layers: 'SRTM30-Contour'
+  }
+  
+  ),.addTo(map);
 
   /* Display a point marker with pop-up text */
   /* L.marker([41.77, -72.69]).addTo(map) // EDIT marker coordinates
