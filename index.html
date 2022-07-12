@@ -19,42 +19,32 @@
 <body>
 
   <!-- Display the map and title with HTML division tags  -->
-  <div id="map-title">Data Sentinel-2</div>
+  <div id="map-title">TAJUK DI SINI</div>
   <div id="map"></div>
 
   <!-- Create the interactive map content with JavaScript (.js) -->
   <script>
 
   /* Set up the initial map center and zoom level */
-    var satu = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '© OpenStreetMap'
-});
-    
-    var dua = L.tileLayer(mapboxUrl, {id: 'akuanaktimur.5qhe20b2', tileSize: 512, zoomOffset: -1, attribution: mapboxAttribution});
-
-    
-    var map = L.map('map', {
+  var map = L.map('map', {
     center: [5.5637, 100.8630], // EDIT coordinates to re-center map
     zoom: 12,  // EDIT from 1 (zoomed out) to 18 (zoomed in)
     scrollWheelZoom: false,
     tap: false
-    layers: [satu, dua]
   });
-  
-    var baseMaps = {
-    "OpenStreetMap/CARTO": satu
-};
 
-    var overlayMaps = {
-    "Cubaan": dua
-};
+  /* display basemap tiles -- see others at https://leaflet-extras.github.io/leaflet-providers/preview/ */
+  L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      attribution: '&copy; <a href="https://osm.org/copyright">\
+        OpenStreetMap</a> contributors, &copy;\
+        <a href="https://carto.com/attribution">CARTO</a>'
+  }).addTo(map);
+
   /* Display a point marker with pop-up text */
-  /* L.marker([41.77, -72.69]).addTo(map) // EDIT marker coordinates
-  .bindPopup("Insert pop-up text here"); // EDIT pop-up text message */
+  L.marker([5.5637, 100.8630]).addTo(map) // EDIT marker coordinates
+  .bindPopup("TA-DA"); // EDIT pop-up text message
 
-    var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
-    
   </script>
 </body>
 </html>
