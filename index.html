@@ -19,7 +19,7 @@
 <body>
 
   <!-- Display the map and title with HTML division tags  -->
-  <div id="map-title">Data Sentinel-2 7 Julai 2022</div>
+  <div id="map-title">Data Sentinel-2</div>
   <div id="map"></div>
 
   <!-- Create the interactive map content with JavaScript (.js) -->
@@ -43,7 +43,7 @@ var basemaps = {
 
 L.control.layers(basemaps).addTo(map);
 
-basemaps.Topography.addTo(map);    
+basemaps.Basemap.addTo(map);    
     
   /* display basemap tiles -- see others at https://leaflet-extras.github.io/leaflet-providers/preview/ */
   L.tileLayer(
