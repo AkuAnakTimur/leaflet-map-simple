@@ -25,13 +25,8 @@
   <!-- Create the interactive map content with JavaScript (.js) -->
   <script>
 
-    var label = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
-      maxZoom: 18,
-id: 'mapbox.mapbox-streets-v8',
-accessToken: 'pk.eyJ1IjoiYWt1YW5ha3RpbXVyIiwiYSI6ImNsNWlnbzNuZjA1MGUzYm14dXdob29lZWEifQ.dUB9XGZrXSBCOcC9CVbXOA'
-});
   /* Set up the initial map center and zoom level */
-  var streets = L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}',{
+  var hybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
     maxZoom: 20,
     subdomains:['mt0','mt1','mt2','mt3'],
     attribution: '© Google'}
@@ -48,25 +43,18 @@ accessToken: 'pk.eyJ1IjoiYWt1YW5ha3RpbXVyIiwiYSI6ImNsNWlnbzNuZjA1MGUzYm14dXdob29
     zoom: 12,  // EDIT from 1 (zoomed out) to 18 (zoomed in)
     scrollWheelZoom: false,
     tap: false,
-    layers:[streets,sat]}
+    layers:[hybrid,sat]}
     );
 
 var baseMaps = {
-    "Google Streets": streets,
+    "Google Hybrid": hybrid,
     "Google Satellite": sat
 };
 
-    var overlayMaps = {
-    "Sampel": label
 };
-var layerControl = L.control.layers(baseMaps, overlayMaps).addTo(map);
+var layerControl = L.control.layers(baseMaps).addTo(map);
     
-    L.control.resetView({
-        position: "topleft",
-        title: "Reset view",
-        latlng: L.latLng([5.5637, 100.8630]),
-        zoom: 12,
-    }).addTo(map);
+
   </script>
 </body>
 </html>
