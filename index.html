@@ -26,6 +26,16 @@
   <script>
 
   /* Set up the initial map center and zoom level */
+       
+var baling = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}',{
+    attribution: 'Contains modified Copernicus Sentinel data 2022',
+    maxZoom: 18,
+    id: 'akuanaktimur.c5vd1k45',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoiYWt1YW5ha3RpbXVyIiwiYSI6ImNsNWlnbzNuZjA1MGUzYm14dXdob29lZWEifQ.dUB9XGZrXSBCOcC9CVbXOA'}
+                        );
+    
   var hybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
     maxZoom: 20,
     subdomains:['mt0','mt1','mt2','mt3'],
@@ -37,22 +47,13 @@
     subdomains:['mt0','mt1','mt2','mt3'],
     attribution: '© Google'}
     ); 
-   
-var baling = L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Contains modified Copernicus Sentinel data 2022',
-    maxZoom: 18,
-    id: 'akuanaktimur.c5vd1k45',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoiYWt1YW5ha3RpbXVyIiwiYSI6ImNsNWlnbzNuZjA1MGUzYm14dXdob29lZWEifQ.dUB9XGZrXSBCOcC9CVbXOA'
-});
     
-  var map = L.map('map', {
+  var map = L.map('map',{
     center: [5.5637, 100.8630], // EDIT coordinates to re-center map
     zoom: 12,  // EDIT from 1 (zoomed out) to 18 (zoomed in)
     scrollWheelZoom: false,
     tap: false,
-    layers:[hybrid,sat]}
+    layers:[hybrid,baling,sat]}
     );
 
 var baseMaps = {
