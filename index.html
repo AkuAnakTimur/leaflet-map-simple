@@ -30,6 +30,12 @@
 var baling = L.tileLayer('https://api.mapbox.com/styles/v1/akuanaktimur/cl5xglwuj000g15pjt7sg9cly/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYWt1YW5ha3RpbXVyIiwiYSI6ImNpbWp1eHlkcTAwdXR1cWt1MTh1dnQyd24ifQ._ikouF8ZIVds9OxjPRGZLg',{
     attribution: 'Contains modified Copernicus Sentinel data 2022'}
                         );
+   var jul = L.tileLayer('https://api.mapbox.com/styles/v1/akuanaktimur/cl6anh8zs002y14unfbtul8on/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYWt1YW5ha3RpbXVyIiwiYSI6ImNpbWp1eHlkcTAwdXR1cWt1MTh1dnQyd24ifQ._ikouF8ZIVds9OxjPRGZLg',{
+    attribution: 'Contains modified Copernicus Sentinel data 2022'}
+                        );
+    var og = L.tileLayer('https://api.mapbox.com/styles/v1/akuanaktimur/cl6ano73l002615lb4lxj7th0/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYWt1YW5ha3RpbXVyIiwiYSI6ImNpbWp1eHlkcTAwdXR1cWt1MTh1dnQyd24ifQ._ikouF8ZIVds9OxjPRGZLg',{
+    attribution: 'Contains modified Copernicus Sentinel data 2022'}
+                        );   
     
   var hybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
     maxZoom: 20,
@@ -48,13 +54,15 @@ var baling = L.tileLayer('https://api.mapbox.com/styles/v1/akuanaktimur/cl5xglwu
     zoom: 12,  // EDIT from 1 (zoomed out) to 18 (zoomed in)
     scrollWheelZoom: false,
     tap: false,
-    layers:[hybrid,baling,sat]}
+    layers:[hybrid,og,jul,baling,sat]}
     );
 
 var baseMaps = {
     "Google Hybrid": hybrid,
     "Google Satellite": sat,
-    "Sentinel-2 7 Julai 2022": baling
+    "Sentinel-2 2 Julai 2022": jul,
+    "Sentinel-2 7 Julai 2022": baling,
+    "Sentinel-2 1 Ogos 2022": og
 };
 
 var layerControl = L.control.layers(baseMaps).addTo(map);
